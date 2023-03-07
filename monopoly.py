@@ -12,8 +12,6 @@ def leer_token(ruta_archivo: str) -> str:
     return token
 
 
-# Define el tablero
-tablero = ['La Goleta', 'Comunidad','Churripena','Inviertes en Student Coin','Urbano','Feria de la Viñuela', 'Silbato de Luismi','Suerte','Gafas de Juanki', 'El bigote de Jesús', 'Cárcel:Solo visitas', 'Ballesta de Guille', 'Vermont Avenue', 'Connecticut Avenue']
 
 # Lee la lista de propiedades desde un archivo JSON
 with open('propiedades.json') as f:
