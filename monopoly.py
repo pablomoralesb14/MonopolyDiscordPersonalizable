@@ -14,16 +14,38 @@ def leer_token(ruta_archivo: str) -> str:
 
 
 # Lee la lista de propiedades desde un archivo JSON
-with open('propiedades.json') as f:
-    propiedades = json.load(f)
+with open('propiedades.json') as props:
+    propiedades = json.load(props)
+
+#Lee el tablero desde un fichero JSON
+with open('tablero.json') as tabler:
+    tablero = json.load(tabler)
+
+#Lee las cartas de suerte desde un fichero JSON
+with open('suerte.json') as s:
+    suerte = json.load(s)
+
+#Lee las cartas de comunidad desde un fichero JSON
+with open('comunidad.json') as com:
+    comunidad = json.load(com)
 
 # Define el comando para imprimir las propiedades
 @bot.command()
 async def lista_propiedades(ctx):
-    for propiedad, atributos in propiedades.items():
-        mensaje = f"{propiedad}: precio={atributos['precio']}, alquiler={atributos['alquiler']}, apartamentos={atributos['apartamentos']}, hoteles={atributos['hoteles']}, hipoteca={atributos['hipoteca']}"
-        await ctx.send(mensaje)
-
+    # Se crea un mensaje con todas las propiedades y sus atributos
+    for propiedad in propiedades:
+        message = ""
+        message += f"Nombre: {propiedad['nombre']}\n"
+        message += f"Precio: {propiedad['precio']}\n"
+        message += f"Alquiler: {propiedad['alquiler']}\n"
+        message += f"Casas: {propiedad['casas']}\n"
+        message += f"Hotel: {propiedad['hotel']}\n"
+        message += f"Color: {propiedad['color']}\n"
+        message += f"Hipoteca: {propiedad['hipoteca']}\n"
+        message += f"Precio para edificar: {propiedad['precio_edificar']}\n\n"
+        await ctx.send(message)
+    
+    # Se envía el mensaje al canal donde se ejecutó el comando
 
 # Define la clase jugador
 class Jugador:
