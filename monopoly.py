@@ -29,6 +29,10 @@ with open('suerte.json') as s:
 with open('comunidad.json') as com:
     comunidad = json.load(com)
 
+#Lee las estaciones desde un fichero JSON
+with open('estaciones.json') as est:
+    estaciones = json.load(est)
+
 # Define el comando para imprimir las propiedades
 @bot.command()
 async def lista_propiedades(ctx):
@@ -43,6 +47,7 @@ async def lista_propiedades(ctx):
         message += f"Color: {propiedad['color']}\n"
         message += f"Hipoteca: {propiedad['hipoteca']}\n"
         message += f"Precio para edificar: {propiedad['precio_edificar']}\n\n"
+        message += f"Propietario: {propiedad['propietario']}\n"
         await ctx.send(message)
     
     # Se envía el mensaje al canal donde se ejecutó el comando
